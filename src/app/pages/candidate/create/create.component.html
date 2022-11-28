@@ -1,0 +1,74 @@
+<div class="row">
+    <div class="col-lg-12">
+        <nb-card>
+            <nb-card-header *ngIf="creationMode">
+                CREAR CANDIDATO
+            </nb-card-header>
+            <nb-card-header *ngIf="!creationMode">
+                ACTUALIZAR CANDIDATO
+            </nb-card-header>
+            <nb-card-body>
+                <div class="row">
+                    <div class="col-lg-3">
+                        <label>Numero Resolucion</label>
+                    </div>
+                    <div class="col-lg-9">
+                        <input  type="text" class="form-control" 
+                                [disabled]="!creationMode" [(ngModel)]="candidate.numero_resolucion">
+                        <p *ngIf="sendingAttemp && candidate.numero_resolucion==''">Requerido</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-3">
+                        <label>Cedula</label>
+                    </div>
+                    <div class="col-lg-9">
+                        <input  type="text" class="form-control" 
+                                [(ngModel)]="candidate.cedula">
+                        <p *ngIf="sendingAttemp && candidate.cedula==''">Requerido</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-3">
+                        <label>Nombre</label>
+                    </div>
+                    <div class="col-lg-9">
+                        <input  type="text" class="form-control" 
+                                [(ngModel)]="candidate.nombre">
+                        <p *ngIf="sendingAttemp && candidate.nombre==''">Requerido</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-3">
+                        <label>Apellido</label>
+                    </div>
+                    <div class="col-lg-9">
+                        <input type="text" class="form-control"
+                                [(ngModel)]="candidate.apellido">
+                        <p *ngIf="sendingAttemp && candidate.apellido==''">Requerido</p>
+                    </div>
+                </div>
+                <!--   <div class="row">
+                    <div class="col-lg-3">
+                        <label>Partido</label>
+                    </div>
+                    <div class="col-lg-9">
+                        <select class="form-control" [(ngModel)]="candidate.politicalparty._id" fullWidth>
+                            <option *ngFor="let politicalparty of politicalparty" [value]="politicalparty._id">{{politicalparty.nombre}}</option>
+                        </select>
+                        <p *ngIf="sendingAttemp && candidate.politicalparty._id==''">Requerido</p>
+                      </div>  
+                </div>-->
+                <br />
+                <div class="row">
+                    <button *ngIf="creationMode" class="btn btn-primary btn-block" (click)="create()">
+                        Crear
+                    </button>
+                    <button *ngIf="!creationMode" class="btn btn-primary btn-block" (click)="edit()">
+                        Actualizar
+                    </button>
+                </div>
+            </nb-card-body>
+        </nb-card>
+    </div>
+</div>
